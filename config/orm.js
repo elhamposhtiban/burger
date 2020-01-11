@@ -1,0 +1,2 @@
+
+const mydata = require("./connection")
