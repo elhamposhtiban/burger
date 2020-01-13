@@ -38,7 +38,7 @@ const orm = {
         });
     }, 
     create: function(table, cols,vals, cb){
-        const queryString = "insert into" + table;
+       let queryString = "insert into" + table;
         queryString += "(";
         queryString += cols.toString();
         queryString += ")";
@@ -54,7 +54,7 @@ const orm = {
     })
     },
     update: function(table, objColVals, condition, cb) {
-        var queryString = "update " + table;
+        let queryString = "update " + table;
     
         queryString += " set ";
         queryString += objectTosql(objColVals);

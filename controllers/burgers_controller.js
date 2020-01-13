@@ -5,14 +5,16 @@ const router = express.Router();
 const burger = require("../models/burger")
 
 router.get("/", function (err,res) {
+
     burger.all(function(data) {
-const bdObject = {
-    burgers :data 
-};
-console.log(bdObject);
-res.render("index", bdObject);
+
+    const object = {
+     burgers :data 
+   };
+ console.log(object);
+res.render("index", object);
     });
-});
+ });
 
 router.post("/api/burgers", function (req,res){
     burger.create(["burger_name", "devoured"],
