@@ -16,8 +16,8 @@ function objectTosql (ob){
     const arry = [];
     for(const key in ob ){
         const value = ob[key]
-        if (objectTosql.hasOwnProperty.call(ob,key)){
-            if (typeof value ==="string" && value.indexOf("")> = 0 ){
+        if (Object.hasOwnProperty.call(ob,key)){
+            if (typeof value ==="string" && value.indexOf("")>= 0 ){
                 value = "'" + value + "'";
             }
             Array.push(key + "=" + value);
@@ -57,7 +57,7 @@ const orm = {
         var queryString = "update " + table;
     
         queryString += " set ";
-        queryString += objToSql(objColVals);
+        queryString += objectTosql(objColVals);
         queryString += " where ";
         queryString += condition;
     
