@@ -1,0 +1,13 @@
+* {
+    font-family: 'Be Vietnam', sans-serif;
+    font-family: 'Lora', serif;
+    color:blue;
+}
+
+
+body {
+    background-image: url(../img/4.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
