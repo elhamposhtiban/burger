@@ -8,20 +8,58 @@
         <hr>
     </div>
     <div class = "row">
-        <div class="col-sm-6 mt-4">
-    hiii to every one i am happy to have you 
+        <div class="col-sm-6 mt-4 devour">
+            <h2>burges that are not devour!</h2>
+             <div class="card-body">
+                    <ul>
+                        {{#each burgers}}
+                            {{#unless this.devoured}}
+                        
+                        <li>
+                           
+                            {{this.id}}
+                            {{this.burger_name}}
+                            <form action="burgers/update/{{this.id}}?_method=PUT" method"POST">
+                            <input type="hidden" name="devoured" value="false">
+                            <button data-id="{{id}}" data-newdevour ="{{devoured}}"  class="devburger btn">Devour!</button> 
+                            </form> 
+                        </li>
+                            
+                            {{/unless}}
+                        {{/each}}
+                    </ul>
+             </div>
+
         </div>
-        <div class="col-sm-6 mt-4">
-    hello world 
+        <div class="col-sm-6 mt-4 devoured">
+             <h2>burges that are devour!</h2>
+            <div class="card-body">
+                 <ul>
+                    {{#each burgers}}
+
+                    <p>
+                        {{#if devoured}}
+                        {{this.id}}
+                        {{this.burger_name}}
+                    </p>
+                    {{/if}}
+                    {{/each}}
+                </ul>
+             </div>
+
         </div>
     </div>
-    <div class = "row mt-4">
-        <form>
-            <div class="form-group">
-            <label for="text-input"><strong> send us your favorite burger !</strong></label>
-            <input type="email" class="form-control" id="text-input" aria-describedby="emailHelp">
-            </div>
-             <button type="submit" class="btn btn-primary">Add your own burger</button>
-        </form>
+    <div class = "row mt-2">
+        <div class="col-sm-12">
+            <form class="submit-burgers">
+
+                <div class="form-group">
+                <label for="text-input"> name your own burger here !!!</label>
+                <input type="text"  id="text-input" name="burger">
+                </div>
+                <button type="submit" class="btn " id="add-burger">Add your own burger</button>
+            </form>
+        </div>
     </div>
 </div>
+

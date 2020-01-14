@@ -4,7 +4,7 @@ const connection = require("./connection")
 function printQmarks(num) {
 
     const arry = [];
-    for (const i=0; i<num; i++) {
+    for (let i=0; i<num; i++) {
         arry.push("?");
     }
     return arry.toString();
@@ -14,13 +14,13 @@ function printQmarks(num) {
 
 function objectTosql (ob){
     const arry = [];
-    for(const key in ob ){
-        const value = ob[key]
+    for(let key in ob ){
+        let value = ob[key]
         if (Object.hasOwnProperty.call(ob,key)){
             if (typeof value ==="string" && value.indexOf("")>= 0 ){
                 value = "'" + value + "'";
             }
-            Array.push(key + "=" + value);
+            arry.push(key + "=" + value);
         }
     }
     return arry.toString();
@@ -38,7 +38,7 @@ const orm = {
         });
     }, 
     create: function(table, cols,vals, cb){
-       let queryString = "insert into" + table;
+       let queryString = "insert into " + table;
         queryString += "(";
         queryString += cols.toString();
         queryString += ")";
@@ -69,21 +69,8 @@ const orm = {
     
           cb(result);
         });
-      },
-      delete: function(table, condition, cb) {
-        var queryString = "delete from" + table;
-        queryString += " where ";
-        queryString += condition;
-    
-        connection.query(queryString, function(err, result) {
-          if (err) {
-            throw err;
-          }
-    
-          cb(result);
-        });
       }
-
+      
 }
 
 module.exports = orm
